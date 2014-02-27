@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140224192831) do
+ActiveRecord::Schema.define(:version => 20140225184152) do
+
+  create_table "departments", :force => true do |t|
+    t.string   "name"
+    t.integer  "institute_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "departments", ["institute_id"], :name => "index_departments_on_institute_id"
 
   create_table "institutes", :force => true do |t|
     t.string   "name"

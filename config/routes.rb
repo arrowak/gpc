@@ -1,5 +1,9 @@
 Gpc::Application.routes.draw do
-  resources :institutes
+
+
+  resources :institutes do
+    resources :departments
+  end
 
 
   devise_for :users
