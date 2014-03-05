@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140305180945) do
+ActiveRecord::Schema.define(:version => 20140305182907) do
 
   create_table "batches", :force => true do |t|
     t.string   "name"
@@ -39,8 +39,12 @@ ActiveRecord::Schema.define(:version => 20140305180945) do
     t.text     "description"
     t.integer  "batch_id"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "docfile_file_name"
+    t.string   "docfile_content_type"
+    t.integer  "docfile_file_size"
+    t.datetime "docfile_updated_at"
   end
 
   add_index "documents", ["batch_id"], :name => "index_documents_on_batch_id"

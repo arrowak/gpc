@@ -12,12 +12,21 @@
 
 <p>
   <b>Batch:</b>
-  <%= @document.batch %>
+  <%= @document.batch.name %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= @document.user %>
+  <%= @document.user.email %>
+</p>
+
+<p>
+	<b>Document attached:</b>
+	<% if @document.docfile.file? %>
+		<%= link_to :document, @document.docfile.url, :target => '_blank' %>
+	<% else %>
+		<%= image_tag @document.docfile.url, :style => "vertical-align:middle;" %>
+	<% end %>
 </p>
 
 

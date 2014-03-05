@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   belongs_to :role
+  has_many :documents
 
   def role? irole
   	self.role.name == irole.to_s

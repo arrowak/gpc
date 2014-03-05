@@ -15,8 +15,8 @@
   <tr>
     <td><%= document.title %></td>
     <td><%= document.description %></td>
-    <td><%= document.batch %></td>
-    <td><%= document.user %></td>
+    <td><%= document.batch.name %></td>
+    <td><%= document.user.email %></td>
     <td><%= link_to 'Show', batch_document_path(@batch, document) %></td>
     <td><%= link_to 'Edit', edit_batch_document_path(@batch, document) %></td>
     <td><%= link_to 'Destroy', batch_document_path(@batch, document), method: :delete, data: { confirm: 'Are you sure?' } %></td>

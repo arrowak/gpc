@@ -1,4 +1,5 @@
 class Batch < ActiveRecord::Base
   belongs_to :department
-  attr_accessible :active, :date_end, :date_start, :name
+  has_many :documents
+  attr_accessible :active, :date_end, :date_start, :name, :department
 end

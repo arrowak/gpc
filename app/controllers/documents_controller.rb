@@ -48,6 +48,8 @@ class DocumentsController < ApplicationController
     @document = Document.new(params[:document])
 
     @document.batch = @batch
+    @document.user = current_user
+
     respond_to do |format|
       if @document.save
         format.html { redirect_to batch_document_path(@batch, @document), notice: 'Document was successfully created.' }
@@ -66,6 +68,8 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
 
     @document.batch = @batch
+    @document.user = current_user
+    
     respond_to do |format|
       if @document.update_attributes(params[:document])
         format.html { redirect_to batch_document_path(@batch, @document), notice: 'Document was successfully updated.' }

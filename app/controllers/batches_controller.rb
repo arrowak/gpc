@@ -58,6 +58,7 @@ class BatchesController < ApplicationController
     @batch = Batch.new(params[:batch])
 
     @batch.department = @department
+    @batch.active = 1
 
     respond_to do |format|
       if @batch.save
@@ -77,6 +78,8 @@ class BatchesController < ApplicationController
     @department = Department.find(params[:department_id])
 
     @batch = Batch.find(params[:id])
+    @batch.department = @department
+    @batch.active = 1
 
     respond_to do |format|
       if @batch.update_attributes(params[:batch])

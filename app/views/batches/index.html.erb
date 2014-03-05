@@ -17,7 +17,7 @@
     <td><%= batch.name %></td>
     <td><%= batch.date_start %></td>
     <td><%= batch.date_end %></td>
-    <td><%= batch.department %></td>
+    <td><%= batch.department.name %></td>
     <td><%= batch.active %></td>
     <td><%= link_to 'Show', institute_department_batch_path(@institute, @department, batch) %></td>
     <td><%= link_to 'Edit', edit_institute_department_batch_path(@institute, @department, batch) %></td>
