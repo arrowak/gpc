@@ -1,11 +1,15 @@
 Gpc::Application.routes.draw do
 
 
-  resources :batches
-
 
   resources :institutes do
-    resources :departments
+    resources :departments do
+      resources :batches
+    end
+  end
+  
+  resources :batches do
+    resources :documents
   end
 
 

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @document.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @document.description %>
+</p>
+
+<p>
+  <b>Batch:</b>
+  <%= @document.batch %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @document.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_batch_document_path(@batch, @document) %> |
+<%= link_to 'Back', batch_documents_path(@batch) %>
