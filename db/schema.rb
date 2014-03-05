@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140225184152) do
+ActiveRecord::Schema.define(:version => 20140227171214) do
+
+  create_table "batches", :force => true do |t|
+    t.string   "name"
+    t.string   "date_start"
+    t.string   "date_end"
+    t.integer  "department_id"
+    t.integer  "active"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "batches", ["department_id"], :name => "index_batches_on_department_id"
 
   create_table "departments", :force => true do |t|
     t.string   "name"

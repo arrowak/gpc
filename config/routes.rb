@@ -1,6 +1,9 @@
 Gpc::Application.routes.draw do
 
 
+  resources :batches
+
+
   resources :institutes do
     resources :departments
   end

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @batch.name %>
+</p>
+
+<p>
+  <b>Date start:</b>
+  <%= @batch.date_start %>
+</p>
+
+<p>
+  <b>Date end:</b>
+  <%= @batch.date_end %>
+</p>
+
+<p>
+  <b>Department:</b>
+  <%= @batch.department %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @batch.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_institute_department_batch_path(@institute, @department, @batch) %> |
+<%= link_to 'Back', institute_department_batches_path(@institute, @department) %>
