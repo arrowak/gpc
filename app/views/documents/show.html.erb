@@ -11,24 +11,15 @@
 </p>
 
 <p>
-  <b>Batch:</b>
-  <%= @document.batch.name %>
+  <b>Assets</b>
+  <% @assets.each do |asset| %>
+    <% if asset.afile.file? %>
+      <br>
+      <%= link_to asset.afile_file_name, asset.afile.url, :target => '_blank' %>
+    <% end %>
+  <% end %>
 </p>
 
-<p>
-  <b>User:</b>
-  <%= @document.user.email %>
-</p>
-
-<p>
-	<b>Document attached:</b>
-	<% if @document.docfile.file? %>
-		<%= link_to :document, @document.docfile.url, :target => '_blank' %>
-	<% else %>
-		<%= image_tag @document.docfile.url, :style => "vertical-align:middle;" %>
-	<% end %>
-</p>
-
-
+  
 <%= link_to 'Edit', edit_batch_document_path(@batch, @document) %> |
 <%= link_to 'Back', batch_documents_path(@batch) %>

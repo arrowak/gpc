@@ -1,0 +1,6 @@
+var html = '<%=j render :partial => "form" %>';
+$('body').html(html);
+
+$('#addMoreFiles').click(function(){
+	$(this).before('<%=j render :partial => "assets/form" %>');
+});

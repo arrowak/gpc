@@ -1,0 +1,5 @@
+<%= fields_for :asset, Asset.new do |aform| %>
+  <div class="field">
+      <%= aform.file_field :afile %>
+  </div>
+<% end %>

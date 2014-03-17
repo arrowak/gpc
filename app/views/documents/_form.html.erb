@@ -19,11 +19,15 @@
     <%= f.label :description %><br />
     <%= f.text_area :description, :rows => 4 %>
   </div>
+
   <div class="field">
-    <%= f.label :docfile %><br />
-    <%= f.file_field :docfile %>
+    <%= fields_for :asset, Asset.new do |aform| %>
+      <%= aform.file_field :afile %>
+    <% end %>
   </div>
   
+  <div class="addMoreFiles" id="addMoreFiles">Add more files</div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140305182907) do
+ActiveRecord::Schema.define(:version => 20140315194049) do
+
+  create_table "announcements", :force => true do |t|
+    t.text     "message"
+    t.integer  "user_id"
+    t.integer  "batch_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "announcements", ["batch_id"], :name => "index_announcements_on_batch_id"
+  add_index "announcements", ["user_id"], :name => "index_announcements_on_user_id"
+
+  create_table "assets", :force => true do |t|
+    t.integer  "assetable_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "afile_file_name"
+    t.string   "afile_content_type"
+    t.integer  "afile_file_size"
+    t.datetime "afile_updated_at"
+    t.string   "assetable_type"
+  end
+
+  add_index "assets", ["assetable_id"], :name => "index_assets_on_assetable_id"
 
   create_table "batches", :force => true do |t|
     t.string   "name"

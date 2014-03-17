@@ -2,6 +2,12 @@ Gpc::Application.routes.draw do
 
 
 
+  resources :assets
+
+
+  resources :announcements
+
+
   resources :institutes do
     resources :departments do
       resources :batches
@@ -12,6 +18,8 @@ Gpc::Application.routes.draw do
     resources :documents
   end
 
+  #map.resources :documents, :has_many => :assets
+  #map.resources :announcements, :has_many => :assets
 
   devise_for :users
 
