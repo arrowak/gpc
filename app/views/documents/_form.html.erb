@@ -21,13 +21,9 @@
   </div>
 
   <div class="field">
-    <%= fields_for :asset, Asset.new do |aform| %>
-      <%= aform.file_field :afile %>
-    <% end %>
+      <%= render partial: "assets/form", locals: {f: f} %>
   </div>
   
-  <div class="addMoreFiles" id="addMoreFiles">Add more files</div>
-  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

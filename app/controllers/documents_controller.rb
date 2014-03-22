@@ -29,10 +29,9 @@ class DocumentsController < ApplicationController
   def new
     @batch = Batch.find(params[:batch_id])
     @document = Document.new
-
     respond_to do |format|
-      format.js
-      #format.html # new.html.erb
+      #format.js
+      format.html # new.html.erb
       format.json { render json: @document }
     end
   end
@@ -47,25 +46,20 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     @batch = Batch.find(params[:batch_id])
-    @document = Document.new(params[:document])
-
+    @document = Document.create(params[:document])
     @document.batch = @batch
     @document.user = current_user
 
-    @asset = Asset.new(params[:asset])
-    @document.save
-    @asset.assetable = @document
-
-    # respond_to do |format|
-    #   if @asset.save
-    #     format.html { redirect_to batch_document_path(@batch, @document), notice: 'Document was successfully created.' }
-    #     format.json { render json: @document, status: :created, location: @document }
-    #   else
-    #     format.html { render action: "new" }
-    #     format.json { render json: @document.errors, status: :unprocessable_entity }
-    #   end
-    # end
-    Rails.logger.info("PARAMS: #{params.inspect}")
+    respond_to do |format|
+      if @document.save
+        @document.create_activity :create, :owner => current_user
+        format.html { redirect_to batch_document_path(@batch, @document), notice: 'Document was successfully created.' }
+        format.json { render json: @document, status: :created, location: @document }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @document.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /documents/1
@@ -79,6 +73,8 @@ class DocumentsController < ApplicationController
     
     respond_to do |format|
       if @document.update_attributes(params[:document])
+        @document.create_activity :update, :owner => current_user
+
         format.html { redirect_to batch_document_path(@batch, @document), notice: 'Document was successfully updated.' }
         format.json { head :no_content }
       else

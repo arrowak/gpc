@@ -4,17 +4,15 @@
   <b>Message:</b>
   <%= @announcement.message %>
 </p>
-
 <p>
-  <b>User:</b>
-  <%= @announcement.user %>
+  <b>Assets</b>
+  <% @assets.each do |asset| %>
+    <% if asset.afile.file? %>
+      <br>
+      <%= link_to asset.afile_file_name, asset.afile.url, :target => '_blank' %>
+    <% end %>
+  <% end %>
 </p>
 
-<p>
-  <b>Batch:</b>
-  <%= @announcement.batch %>
-</p>
-
-
-<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
-<%= link_to 'Back', announcements_path %>
+<%= link_to 'Edit', edit_batch_announcement_path(@batch, @announcement) %> |
+<%= link_to 'Back', batch_announcements_path(@batch) %>

@@ -4,8 +4,9 @@ Gpc::Application.routes.draw do
 
   resources :assets
 
+  resources :timelines
 
-  resources :announcements
+  match 'users/:id' => 'users#profile', :as => :user_profile
 
 
   resources :institutes do
@@ -15,6 +16,7 @@ Gpc::Application.routes.draw do
   end
   
   resources :batches do
+    resources :announcements
     resources :documents
   end
 
