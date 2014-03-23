@@ -6,8 +6,9 @@ Gpc::Application.routes.draw do
 
   resources :timelines
 
-  match 'users/:id' => 'users#profile', :as => :user_profile
-
+  match 'users/:id/show_profile' => 'users#profile', :as => :user_profile
+  match 'users/:id/edit_profile' => 'users#edit_profile', :as => :edit_profile  
+  match 'users/:id/update_profile' => 'users#update_profile', :as => :update_profile
 
   resources :institutes do
     resources :departments do

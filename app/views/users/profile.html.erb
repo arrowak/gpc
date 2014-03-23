@@ -1,4 +1,11 @@
 <div>
+	<%= link_to "Edit Profile", edit_profile_path(@user) %>
+	<p>Name : <%= @user.firstname %> <%= @user.lastname %></p>
 	<p>Email : <%= @user.email %></p>
 	<p>Designation : <%= @user.role.name %></p>
+	<p>Department : <%= @user.batch.department.name %></p>
+	<p>Batch : <%= @user.batch.name %></p>
+	<p>Institute : <%= @user.batch.department.institute.name %></p>
+	<p>Contact Number : <%= @user.contact_number %></p>
+	<p>Avatar : <%= image_tag @user.avatar.url, :style => "width : 150px;" %></p>
 </div>

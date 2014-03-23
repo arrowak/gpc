@@ -1,0 +1,33 @@
+<h2>Edit Profile</h2>
+
+<%= form_for @user, :url => update_profile_path(@user), :html => { :multipart => true, :method => 'POST' } do |f| %>
+	<p class="field">
+		<%= f.label :firstname %>
+		<%= f.text_field :firstname, :readonly => true %>
+	</p>
+
+	<p class="field">
+		<%= f.label :lastname %>
+		<%= f.text_field :lastname, :readonly => true %>
+	</p>
+
+	<p class="field">
+		<%= f.label :email %>
+		<%= f.email_field :email %>
+	</p>
+
+	<p class="field">
+		<%= f.label :contact_number %>
+		<%= f.text_field :contact_number %>
+	</p>
+
+	<p class="field">
+		<%= f.label :avatar %>
+		<%= f.file_field  :avatar %>
+		<%= image_tag @user.avatar.url, :style => "width : 150px;" %>
+	</p>
+
+	<p class="actions">
+   	 	<%= f.submit %>
+  	</p>
+<% end -%>
