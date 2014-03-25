@@ -19,6 +19,8 @@ gem "paperclip", "~> 4.1"
 
 gem 'public_activity'
 
+gem 'faye'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

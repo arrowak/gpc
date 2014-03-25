@@ -14,6 +14,14 @@
 //= require jquery_ujs
 //= require_tree .
 
+$(function(){
+	var faye = new Faye.Client('http://localhost:9292/faye');
+
+	faye.subscribe('/chats/new', function(data){
+		eval(data);
+	});
+});
+
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".fields").hide();

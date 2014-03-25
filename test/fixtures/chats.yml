@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  owner_id: 1
+  recipient_ids: MyText
+
+two:
+  content: MyText
+  owner_id: 1
+  recipient_ids: MyText

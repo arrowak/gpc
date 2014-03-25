@@ -1,6 +1,7 @@
 Gpc::Application.routes.draw do
 
 
+  devise_for :users
 
   resources :assets
 
@@ -21,10 +22,11 @@ Gpc::Application.routes.draw do
     resources :documents
   end
 
+  resources :chats
+
   #map.resources :documents, :has_many => :assets
   #map.resources :announcements, :has_many => :assets
 
-  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
