@@ -1,0 +1,29 @@
+<h1>Listing chat_tokens</h1>
+
+<table>
+  <tr>
+    <th>Token</th>
+    <th>Owner</th>
+    <th>Receipient</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @chat_tokens.each do |chat_token| %>
+  <tr>
+    <td><%= chat_token.token %></td>
+    <td><%= chat_token.owner_id %></td>
+    <td><%= chat_token.receipient_id %></td>
+    <td><%= chat_token.status %></td>
+    <td><%= link_to 'Show', chat_token %></td>
+    <td><%= link_to 'Edit', edit_chat_token_path(chat_token) %></td>
+    <td><%= link_to 'Destroy', chat_token, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Chat token', new_chat_token_path %>

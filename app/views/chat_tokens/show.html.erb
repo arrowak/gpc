@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Token:</b>
+  <%= @chat_token.token %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @chat_token.owner_id %>
+</p>
+
+<p>
+  <b>Receipient:</b>
+  <%= @chat_token.receipient_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @chat_token.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_chat_token_path(@chat_token) %> |
+<%= link_to 'Back', chat_tokens_path %>

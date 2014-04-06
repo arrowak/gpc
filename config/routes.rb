@@ -1,6 +1,9 @@
 Gpc::Application.routes.draw do
 
 
+  resources :chat_tokens
+
+
   devise_for :users
 
   resources :assets

@@ -1,0 +1,33 @@
+<%= form_for(@chat_token) do |f| %>
+  <% if @chat_token.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@chat_token.errors.count, "error") %> prohibited this chat_token from being saved:</h2>
+
+      <ul>
+      <% @chat_token.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :token %><br />
+    <%= f.text_field :token %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_id %><br />
+    <%= f.number_field :owner_id %>
+  </div>
+  <div class="field">
+    <%= f.label :receipient_id %><br />
+    <%= f.number_field :receipient_id %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.number_field :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

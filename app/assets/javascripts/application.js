@@ -17,7 +17,9 @@
 $(function(){
 	var faye = new Faye.Client('http://localhost:9292/faye');
 
-	faye.subscribe('/chats/new', function(data){
+	faye.subscribe('/chats/new/'+$("#currentHash").html(), function(data){
+		console.log('SUBSCRIBED TO : /chats/new/'+$("#currentHash").html());
+		console.log("data : "+data);
 		eval(data);
 	});
 });

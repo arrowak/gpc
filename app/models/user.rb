@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   belongs_to :role
   belongs_to :batch
   has_many :documents
+  has_many :chats
 
   def role? irole
   	self.role.name == irole.to_s

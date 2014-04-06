@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140325191618) do
+ActiveRecord::Schema.define(:version => 20140401192158) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(:version => 20140325191618) do
   end
 
   add_index "batches", ["department_id"], :name => "index_batches_on_department_id"
+
+  create_table "chat_tokens", :force => true do |t|
+    t.string   "token"
+    t.integer  "owner_id"
+    t.integer  "recipient_id"
+    t.integer  "status"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "chats", :force => true do |t|
     t.text     "content"

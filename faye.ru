@@ -1,10 +1,11 @@
 require 'faye'
 require File.expand_path('../config/initializers/faye_token.rb', __FILE__)
+Faye::WebSocket.load_adapter('thin')
 
 class ServerAuth
 	def incoming(message, callback)
 		if message['channel'] !~ %r{^/meta/}
-			if message['ext']['auth_token'] != FAYE_TOKEN
+			if !message['ext']['current_user_tokens'].include? message['ext']['auth_token']
 				message['error'] = "Invalid Authentication Token"
 			end
 		end

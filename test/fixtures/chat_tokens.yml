@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  content: MyText
+  token: MyString
   owner_id: 1
-  recipient_ids: MyText
+  receipient_id: 1
+  status: 1
 
 two:
-  content: MyText
+  token: MyString
   owner_id: 1
-  recipient_ids: MyText
+  receipient_id: 1
+  status: 1
