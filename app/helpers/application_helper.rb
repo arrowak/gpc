@@ -15,7 +15,7 @@ module ApplicationHelper
   def broadcast(channel, recipient, chat_tokens, &block)
     message = {:channel => channel, :data => capture(&block), :ext => {:auth_token => Digest::MD5.hexdigest(current_user.email.to_s() + recipient.email.to_s()), :current_user_tokens => chat_tokens}}
     uri = URI.parse("http://localhost:9292/faye")
-    Rails.logger.info(message)
+    Rails.logger.info(message.to_json)
     Net::HTTP.post_form(uri, :message => message.to_json)
   end
 end
