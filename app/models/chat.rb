@@ -1,6 +1,4 @@
 class Chat < ActiveRecord::Base
-  attr_accessible :content, :owner_id, :recipient_ids
-  belongs_to :owner, class_name: "User"
-  belongs_to :recipient, class_name: "User"
-  has_many :chat_tokens
+  attr_accessible :content, :token_id
+  belongs_to :token, class_name: "ChatToken"
 end

@@ -1,10 +1,23 @@
 
+$('#chat_content').val('');
 <% 
-	Rails.logger.info("CHAT OWNER : #{@chat.owner.email} RECIPIENT : #{@recipient.email} CURRENT USER : #{current_user.email}")
+	#Rails.logger.info("CHAT OWNER : #{@chat.token.owner.email} RECIPIENT : #{@recipient.email} CURRENT USER : #{current_user.email}")
 	broadcast "/chats/new/#{Digest::MD5.hexdigest(@recipient.email)}", @recipient, @chat_tokens do 
 
 %>
-	$("#chat").append("<li class='chatmessage'><%= @chat.content %></li>");
+	var currentChats = $('.chatWindow.<%=current_user.id%>');
+		if(currentChats.length == 0)
+		{
+			var id = "<%=current_user.id%>";
+			var data_token = "<%=Digest::MD5.hexdigest(current_user.email)%>";
+			$('#chatWindows').append(chat_window(id, data_token));
+			$(".chatWindow.<%=current_user.id%> .chat").append("<li class='chatmessage'><%= @chat.content %></li>");
+		}
+		else
+		{
+			$(".chatWindow.<%=current_user.id%> .chat").append("<li class='chatmessage'><%= @chat.content %></li>");
+		}
 <% 
 	end 
 %>
+
