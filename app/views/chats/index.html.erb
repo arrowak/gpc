@@ -35,7 +35,11 @@
 
 
 		$('body').on('submit', '#new_chat', function(){
-			$(this).siblings('.chat').append("<li class='chatmessage'>"+ $(this).find('#chat_content').val() +"</li>");
+			var msg = $(this).find('#chat_content').val();
+			if(msg.trim() != "")
+				$(this).siblings('.chat').append("<li class='chatmessage'>"+ msg +"</li>");
+			else
+				return false;
 		});
 
 		$('.users li').click(function(){
