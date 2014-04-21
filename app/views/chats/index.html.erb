@@ -1,7 +1,7 @@
 <h2>Chat</h2>
 <ul class="users" id="users">
 	<% @users.each do |user| %>
-		<li data-token="<%=Digest::MD5.hexdigest(user.email)%>" id="<%=user.id%>"> <%= user.email %> </li>
+		<li data-token="<%=Digest::MD5.hexdigest(user.email)%>" data-name="<%= user.firstname.humanize %> <%= user.lastname.humanize %>" id="<%=user.id%>"> <%= user.email %> </li>
 	<% end %>
 </ul>
 
@@ -19,34 +19,45 @@
 			eval(data);
 		});
 
-		var chat_window = function(id, data_token){
+		var chat_window = function(id, data_token, name){
 
-			var chat_form = '<div class="chatWindow '+id+'" class="chatWindow"><ul class="chat"></ul>'+
+			var chat_form = '<div class="chatWindow '+id+'"><div class="chatHeader"><div class="chatName">'+name+'</div><div class="chatMinimize">&#10134;</div><div class="chatClose">&#10060;</div></div><ul class="chat"></ul>'+
 					'<%= form_for Chat.new, :remote => true do |f| %>'+
-						'<%= f.text_field :content %>'+
+						'<%= f.text_field :content, :style => "display:none" %>'+
+						'<div class="chat_content_div" contenteditable="true"></div>'+
 						'<div class="hiddens '+id+'">'+ 
 						'<input type="hidden" class="currentChats" name="chat[currentChats]" value="'+id+'" data-token="'+data_token+'" />' +
 						'</div>'+
 						'<%= f.submit "Send" %>'+
 					'<% end %>'+
-					'</div>' ;
+					'</div>';
 			return chat_form;
 		};
 
+		var chat_message = function(msg, sender, sent_time){
+			var message_html = '<li class="chatmessage">'+
+				'<div class="senderName"> '+sender+' </div> <div class="chatMessage">'+msg+'</div><div class="chatTime small blur">'+sent_time+'</div></li>';
+			return message_html;
+		};
 
-		$('body').on('submit', '#new_chat', function(){
+		$('.chatWindows').on('submit', '#new_chat', function(e){
+			//e.preventDefault();
+			$(this).find('#chat_content').val($(this).find('.chat_content_div').html());
 			var msg = $(this).find('#chat_content').val();
-			if(msg.trim() != "")
-				$(this).siblings('.chat').append("<li class='chatmessage'>"+ msg +"</li>");
-			else
-				return false;
+			var sender = $('#currentName').html();
+			if(msg.trim() != ""){
+				$(this).siblings('.chat').append(chat_message(msg, sender, moment().calendar()));
+				//$(this).submit();
+			}
 		});
 
 		$('.users li').click(function(){
 			var id = $(this).attr('id');
 			var data_token = $(this).attr('data-token');
-			$('#chatWindows').append(chat_window(id, data_token));
+			var name = $(this).attr('data-name');
+			$('#chatWindows').append(chat_window(id, data_token, name));
 		});
+
 	});
 
 </script>

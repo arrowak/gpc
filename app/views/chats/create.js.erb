@@ -6,16 +6,19 @@ $('#chat_content').val('');
 
 %>
 	var currentChats = $('.chatWindow.<%=current_user.id%>');
+		var name = "<%= current_user.firstname.humanize %> <%= current_user.lastname.humanize %>";
+		var msg = "<%= @chat.content %>";
+		var sender = name;
 		if(currentChats.length == 0)
 		{
 			var id = "<%=current_user.id%>";
 			var data_token = "<%=Digest::MD5.hexdigest(current_user.email)%>";
-			$('#chatWindows').append(chat_window(id, data_token));
-			$(".chatWindow.<%=current_user.id%> .chat").append("<li class='chatmessage'><%= @chat.content %></li>");
+			$('#chatWindows').append(chat_window(id, data_token, name));
+			$(".chatWindow.<%=current_user.id%> .chat").append(chat_message(msg, sender, moment().calendar()));
 		}
 		else
 		{
-			$(".chatWindow.<%=current_user.id%> .chat").append("<li class='chatmessage'><%= @chat.content %></li>");
+			$(".chatWindow.<%=current_user.id%> .chat").append(chat_message(msg, sender, moment().calendar()));
 		}
 <% 
 	end 
