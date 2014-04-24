@@ -78,6 +78,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.6.1)
     journey (1.0.4)
+    jquery-migrate-rails (1.2.1)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -160,6 +161,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   faye
+  jquery-migrate-rails
   jquery-rails
   mysql2
   paperclip (~> 4.1)

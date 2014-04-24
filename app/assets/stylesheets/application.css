@@ -43,6 +43,7 @@ body{
 	top : 0px;
 	left : 0px;
 	margin-bottom: 1%;
+	color: #EFEFEF;
 }
 
 .top-nav-bar div{
@@ -106,4 +107,15 @@ body{
 	width : 90%;
 	border: 1px solid rgba(0,0,0,0.5);
 	min-height: 50px;
+	white-space: pre-wrap;
+}
+
+.chatWindow .chatmessage .chatTime{
+	text-align: right;
+}
+
+.chat{
+	list-style-type: none;
+	padding: 5px;
+	margin: 0px;
 }

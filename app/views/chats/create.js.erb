@@ -8,6 +8,7 @@ $('#chat_content').val('');
 	var currentChats = $('.chatWindow.<%=current_user.id%>');
 		var name = "<%= current_user.firstname.humanize %> <%= current_user.lastname.humanize %>";
 		var msg = "<%= @chat.content %>";
+		msg = format_pre_chat_msg(msg);
 		var sender = name;
 		if(currentChats.length == 0)
 		{

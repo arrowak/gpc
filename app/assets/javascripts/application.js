@@ -11,9 +11,33 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-migrate-min
 //= require jquery_ujs
 //= require_tree .
 
+$.fn.getPreText = function () {
+    var ce = $("<pre />").html(this.html());
+    if ($.browser.webkit)
+      ce.find("div").replaceWith(function() { return "\n" + this.innerHTML; });
+    if ($.browser.msie)
+      ce.find("p").replaceWith(function() { return this.innerHTML + "<br>"; });
+    if ($.browser.mozilla || $.browser.opera || $.browser.msie)
+      ce.find("br").replaceWith("\n");
+  	console.log(ce.text());
+    return ce.text();
+};
+
+function format_pre_chat_msg(msg){
+	var ce = $("<pre />").html(msg);
+    if ($.browser.webkit)
+      ce.find("div").replaceWith(function() { return "\n" + this.innerHTML; });
+    if ($.browser.msie)
+      ce.find("p").replaceWith(function() { return this.innerHTML + "<br>"; });
+    if ($.browser.mozilla || $.browser.opera || $.browser.msie)
+      ce.find("br").replaceWith("\n");
+  	console.log(ce.text());
+    return ce.text();
+}
 
 
 function remove_fields(link) {
