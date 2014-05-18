@@ -12,6 +12,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @institutes.each do |institute| %>
@@ -26,6 +27,7 @@
     <td><%= link_to 'Show', institute %></td>
     <td><%= link_to 'Edit', edit_institute_path(institute) %></td>
     <td><%= link_to 'Destroy', institute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to "Departments", institute_departments_path(institute) %></td>
   </tr>
 <% end %>
 </table>

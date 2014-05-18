@@ -1,4 +1,4 @@
-<h1>Listing announcements</h1>
+<h1>Listing announcements for <%= link_to @batch.name, institute_department_batch_path(@batch.department.institute, @batch.department, @batch) %> batch, <%= link_to @batch.department.name, institute_department_path(@batch.department.institute, @batch.department) %>, <%= link_to @batch.department.institute.name, institute_path(@batch.department.institute) %></h1>
 
 <table>
   <tr>

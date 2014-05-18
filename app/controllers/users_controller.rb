@@ -29,6 +29,9 @@ class UsersController < ApplicationController
 	      end
 	    end
 	    # Rails.logger.info(@user)
-
+	end
+	
+	def sign_in
+		redirect_to new_user_session_path
 	end
 end
