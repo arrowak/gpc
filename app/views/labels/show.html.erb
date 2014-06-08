@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @label.name %>
+</p>
+<% @label.documents.each do |d| %>
+	<%= d.title %>
+<% end %>
+<%= link_to 'Edit', edit_label_path(@label) %> |
+<%= link_to 'Back', labels_path %>
+
+<%= link_to "Create label", new_label_path, :remote => true %>
