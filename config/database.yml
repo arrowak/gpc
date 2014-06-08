@@ -8,7 +8,7 @@ development:
   adapter: mysql2
   database: gpc
   username: root
-  password:
+  password: 
   host: localhost
   port: 3306
   timeout: 5000

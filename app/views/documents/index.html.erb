@@ -6,6 +6,7 @@
     <th>Description</th>
     <th>Batch</th>
     <th>User</th>
+    <th>Label</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= document.description %></td>
     <td><%= document.batch.name %></td>
     <td><%= document.user.email %></td>
+    <td><%= document.labelable.name if document.labelable != nil %> </td>
     <td><%= link_to 'Show', batch_document_path(@batch, document) %></td>
     <td><%= link_to 'Edit', edit_batch_document_path(@batch, document) %></td>
     <td><%= link_to 'Destroy', batch_document_path(@batch, document), method: :delete, data: { confirm: 'Are you sure?' } %></td>

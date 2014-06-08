@@ -13,6 +13,32 @@
 <body>
 <!-- p class="notice"><%= notice %></p -->
 <p class="alert"><%= alert %></p>
+
+<!-- Backdrop element start -->
+    <div id="backdrop"></div>
+<!-- Backdrop element end -->
+
+<!-- Loader element start -->
+    <div id="loader">
+        <div class="loaderContent" onclick="modal_load();">Loading...</div>
+    </div>
+<!-- Loader element end -->
+
+<!-- Modal element start -->
+    <div id="modalClose" onclick="modal_close();">&times; CLOSE</div>
+    <div id="modal">
+    </div>
+<!-- Modal element end -->
+
+<!-- Input prompt element start -->
+    <div class="outerPrompt prompt">
+        <div class="middlePrompt prompt">
+            <div class="innerPrompt prompt">
+            </div>
+        </div>
+    </div>
+<!-- Input prompt element end -->
+
 <div class="top-nav-bar">
 
 	<% if user_signed_in?
@@ -22,6 +48,15 @@
 		<div id="currentName userControls"> <%= current_user.firstname.humanize %> <%= current_user.lastname.humanize %> </div>
 		<div id="currentHash userControls" style="display : none;"> <%= Digest::MD5.hexdigest(current_user.email) %> </div>
         <div id="timeline userNavs"><%= link_to "Timeline", timelines_path %></div>
+        
+        <div class="rightNavbar">
+            <ul class="rightNavbarList">
+                <li class="rightNavbarListItem"><%= link_to "Institutes", institutes_path %></li>
+                <li class="rightNavbarListItem"><%= link_to "Timeline", timelines_path %></li>
+                <li class="rightNavbarListItem"><%= link_to "Documents", batch_documents_path(current_user.batch) %></li>
+                <li class="rightNavbarListItem"><%= link_to "Announcements", batch_announcements_path(current_user.batch) %></li>
+            </ul>
+        </div>
 	<%
 	else
 	%>
@@ -31,14 +66,7 @@
 
 </div>
 
-<div class="rightNavbar">
-    <ul class="rightNavbarList">
-        <li class="rightNavbarListItem"><%= link_to "Institutes", institutes_path %></li>
-        <li class="rightNavbarListItem"><%= link_to "Timeline", timelines_path %></li>
-        <li class="rightNavbarListItem"><%= link_to "Documents", batch_documents_path(current_user.batch) %></li>
-        <li class="rightNavbarListItem"><%= link_to "Announcements", batch_announcements_path(current_user.batch) %></li>
-    </ul>
-</div>
+
 
 <div class="content">
 	<%= yield %>

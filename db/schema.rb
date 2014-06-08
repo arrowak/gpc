@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140413114326) do
+ActiveRecord::Schema.define(:version => 20140519080436) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(:version => 20140413114326) do
     t.string   "docfile_content_type"
     t.integer  "docfile_file_size"
     t.datetime "docfile_updated_at"
+    t.integer  "labelable_id"
+    t.string   "labelable_type"
   end
 
   add_index "documents", ["batch_id"], :name => "index_documents_on_batch_id"
@@ -115,6 +117,13 @@ ActiveRecord::Schema.define(:version => 20140413114326) do
     t.string   "contact_email"
     t.text     "address"
     t.integer  "year_estd"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "labels", :force => true do |t|
+    t.string   "name"
+    t.integer  "parentlabel_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end

@@ -4,7 +4,6 @@ class DocumentsController < ApplicationController
   def index
     @batch = Batch.find(params[:batch_id])
     @documents = @batch.documents
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @documents }

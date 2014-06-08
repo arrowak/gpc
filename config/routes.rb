@@ -1,6 +1,9 @@
 Gpc::Application.routes.draw do
 
 
+  resources :labels
+
+
   resources :chat_tokens
 
 
