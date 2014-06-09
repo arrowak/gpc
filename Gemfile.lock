@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/github/gemoji.git
+  revision: 204ace76dac5ea54ab79a7395640d29b3dd8b0fb
+  specs:
+    gemoji (1.5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -165,6 +171,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   faye
+  gemoji!
   jquery-migrate-rails
   jquery-rails
   mysql2
