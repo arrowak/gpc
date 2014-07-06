@@ -13,3 +13,18 @@
     <% end %>
   </tbody>
 </table>
+
+<!-- Need to check here what all batches the current user has here... For now set to all batches -->
+<% unless(@form.published?) %>
+  <%= form_for(@form, :url => form_publish_path(@form)) do |f| %>
+    <div class="field">
+      <%= f.label :batch_id %>
+      <%= f.select(:batch_id, Batch.all.collect{ |batch| [batch.name, batch.id] }) %>
+    </div>
+    <div class="field">
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% else %>
+  <strong>Batch: <%= @form.batch.name %></strong>
+<% end %>

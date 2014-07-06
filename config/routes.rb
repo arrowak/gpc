@@ -14,6 +14,7 @@ Gpc::Application.routes.draw do
   resources :timelines
 
   resources :forms do
+    put :publish
     resources :fields
   end
 
