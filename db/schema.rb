@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140706061400) do
+ActiveRecord::Schema.define(:version => 20140706072122) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -123,10 +123,14 @@ ActiveRecord::Schema.define(:version => 20140706061400) do
   create_table "forms", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "published",  :default => false
+    t.integer  "batch_id"
   end
 
+  add_index "forms", ["batch_id"], :name => "index_forms_on_batch_id"
+  add_index "forms", ["published"], :name => "index_forms_on_published"
   add_index "forms", ["user_id"], :name => "index_forms_on_user_id"
 
   create_table "institutes", :force => true do |t|
