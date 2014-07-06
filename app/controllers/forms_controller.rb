@@ -1,7 +1,7 @@
 class FormsController < ApplicationController
 
   def index
-    @forms = Form.student_forms(current_user)
+    @forms = Form.where(:user_id => current_user)
   end
 
   def new
