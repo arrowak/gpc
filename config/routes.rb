@@ -31,8 +31,8 @@ Gpc::Application.routes.draw do
   resources :batches do
     resources :announcements
     resources :documents
-    resources :feedback do 
-      post :submit
+    resources :feedback do
+      get :answers
     end
   end
 
