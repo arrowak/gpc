@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140706072122) do
+ActiveRecord::Schema.define(:version => 20140706093540) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -108,6 +108,17 @@ ActiveRecord::Schema.define(:version => 20140706072122) do
 
   add_index "documents", ["batch_id"], :name => "index_documents_on_batch_id"
   add_index "documents", ["user_id"], :name => "index_documents_on_user_id"
+
+  create_table "feedbacks", :force => true do |t|
+    t.integer  "field_id"
+    t.integer  "user_id"
+    t.text     "answer"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "feedbacks", ["field_id"], :name => "index_feedbacks_on_field_id"
+  add_index "feedbacks", ["user_id"], :name => "index_feedbacks_on_user_id"
 
   create_table "fields", :force => true do |t|
     t.string   "name"
