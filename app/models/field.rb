@@ -8,4 +8,12 @@ class Field < ActiveRecord::Base
 
   belongs_to :form
 
+  def radio?
+    self.category === RADIO_BUTTON_FIELD
+  end
+
+  def stats(answers, total, option)
+    ( answers.size.to_f / total.to_f ) * 100.00
+  end
+
 end

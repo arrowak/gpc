@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
   def role? irole
   	self.role.name == irole.to_s
   end
+
+  def fullname
+    self.firstname + " " + self.lastname
+  end
 end

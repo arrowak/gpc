@@ -1,0 +1,22 @@
+<% @grouped_answers.each do |key, value| %>
+  <div>
+    <h3><%= key.fullname %></h3>
+    <% value.each do |answer| %>
+      <div>
+        <h5><%= answer.field.name %></h5>
+        <p><%= answer.answer %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<h3>Staistics</h3>
+<% @grouped_fields.each do |key, value| %>
+  <p>
+  <% if(key.radio?) %>
+    <% key.options.split(",").each do |option| %>
+      <%= option %>: <%= key.stats(@answers.select{ |answer| answer.answer.strip === option.strip }, @grouped_answers.size, option.strip) %>% <br>
+    <% end %>
+  <% end %>
+  </p>
+<% end %>

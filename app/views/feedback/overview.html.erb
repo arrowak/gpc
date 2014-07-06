@@ -1,0 +1,9 @@
+<table>
+  <tbody>
+    <% @forms.each do |f| %>
+    <tr>
+      <td><%= link_to(f.name, batch_feedback_review_path(@batch, f)) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

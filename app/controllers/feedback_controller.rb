@@ -47,4 +47,17 @@ class FeedbackController < ApplicationController
     @answers = Feedback.includes(:field).where(:field_id => @fields, :user_id => current_user)
   end
 
+  def overview
+    @batch = Batch.find(params[:batch_id])
+    @forms = Form.where(:user_id => current_user, :published => true)
+  end
+
+  def review
+    @batch = Batch.find(params[:batch_id])
+    @form = Form.find(params[:feedback_id])
+    @answers = Feedback.includes(:field, :user).where(:field_id => @form.fields)
+    @grouped_answers = @answers.group_by{ |a| a.user }
+    @grouped_fields = @answers.group_by{ |a| a.field }
+  end
+
 end

@@ -33,6 +33,10 @@ Gpc::Application.routes.draw do
     resources :documents
     resources :feedback do
       get :answers
+      get :review
+      collection do
+        get :overview
+      end
     end
   end
 
