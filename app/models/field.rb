@@ -13,7 +13,11 @@ class Field < ActiveRecord::Base
   end
 
   def stats(answers, total, option)
-    ( answers.size.to_f / total.to_f ) * 100.00
+    {
+      :percent => ( answers.size.to_f / total.to_f ) * 100.00,
+      :size => answers.size
+    }
+    
   end
 
 end

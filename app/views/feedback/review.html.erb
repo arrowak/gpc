@@ -12,11 +12,14 @@
 
 <h3>Staistics</h3>
 <% @grouped_fields.each do |key, value| %>
-  <p>
   <% if(key.radio?) %>
     <% key.options.split(",").each do |option| %>
-      <%= option %>: <%= key.stats(@answers.select{ |answer| answer.answer.strip === option.strip }, @grouped_answers.size, option.strip) %>% <br>
+      <div style="padding: 10px 0px 10px 0px;">
+        <% stats = key.stats(@answers.select{ |answer| answer.answer.strip === option.strip }, @grouped_answers.size, option.strip) %>
+        <span><%= option %>:</span> <div class="stats-bar" data-total ="<%= @grouped_answers.size %>" data-value="<%= stats[:size] %>" style="width: 200px; border: 1px solid #CCC; height: 8px; display: inline-block; padding: 2px;"><div class="stats-value"></div></div>
+        <%= stats[:percent] %>% 
+        <br>
+      </div>
     <% end %>
   <% end %>
-  </p>
 <% end %>
