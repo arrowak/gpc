@@ -1,0 +1,10 @@
+<%= form_tag( batch_feedback_submit_path(@batch, @form), :method => :post) do %>
+  <% @form.fields.each do |f| %>
+    <div class="field">
+      <%= label_tag "field_#{f.id}", f.name %> <br />
+      <%= parse_field_html(f) %> <br />
+    </div>
+  <% end %>
+
+  <%= submit_tag("Submit") %>
+<% end %>
