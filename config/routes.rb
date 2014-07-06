@@ -13,6 +13,10 @@ Gpc::Application.routes.draw do
 
   resources :timelines
 
+  resources :forms do
+    resources :fields
+  end
+
   match 'users/:id/show_profile' => 'users#profile', :as => :user_profile
   match 'users/:id/edit_profile' => 'users#edit_profile', :as => :edit_profile  
   match 'users/:id/update_profile' => 'users#update_profile', :as => :update_profile
