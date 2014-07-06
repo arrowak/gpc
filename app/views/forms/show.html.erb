@@ -1,1 +1,15 @@
+<h2><%= @form.name %></h2>
 <%= link_to("New Question", new_form_field_path(@form)) %>
+<h3>Questions</h3>
+<table class="table">
+  <tbody>
+    <% @form.fields.each do |field| %>
+    <tr>
+      <td><%= field.name %></td>
+      <td><%= link_to("Edit", edit_form_field_path(@form, field)) %></td>
+      <td><%= link_to("Delete", form_field_path(@form, field), :method => :delete) %></td>
+      <td></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
