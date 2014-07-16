@@ -374,8 +374,6 @@ a:visited.loginLogoutUser{
 	max-height: 25% !important;
 }
 
-
-
 /* ICONS */
 .icon:before{font:40px/.05 'EntypoRegular';margin-right:5px;vertical-align:top;text-decoration:none;display:inline-block;zoom:1;*display:inline;_height:36px}
 icon.aria{text-indent:-9999px;overflow:hidden;display:inline-block;position:relative;min-width:16px}
