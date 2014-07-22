@@ -1,4 +1,4 @@
-<h1>Listing institutes</h1>
+<h1>Institutes</h1>
 
 <table>
   <tr>
@@ -9,9 +9,6 @@
     <th>Contact email</th>
     <th>Address</th>
     <th>Year estd</th>
-    <th></th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
@@ -24,10 +21,10 @@
     <td><%= institute.contact_email %></td>
     <td><%= institute.address %></td>
     <td><%= institute.year_estd %></td>
-    <td><%= link_to 'Show', institute %></td>
-    <td><%= link_to 'Edit', edit_institute_path(institute) %></td>
-    <td><%= link_to 'Destroy', institute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <td><%= link_to "Departments", institute_departments_path(institute) %></td>
+    <td><%= link_to 'Show', institute %>
+    <%= link_to 'Edit', edit_institute_path(institute) %>
+    <%= link_to 'Destroy', institute, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to "Departments", institute_departments_path(institute) %></td>
   </tr>
 <% end %>
 </table>

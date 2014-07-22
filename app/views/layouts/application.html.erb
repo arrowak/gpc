@@ -39,16 +39,8 @@
     </div>
 <!-- Input prompt element end -->
 
-<div class="top-nav-bar">
-
-	<% if user_signed_in?
-	%>
-		<%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "loginLogoutUser" %>
-		<div id="currentEmail userControls">	<%= current_user.email %>  </div>
-		<div id="currentName userControls"> <%= current_user.firstname.humanize %> <%= current_user.lastname.humanize %> </div>
-		<div id="currentHash userControls" style="display : none;"> <%= Digest::MD5.hexdigest(current_user.email) %> </div>
-        <div id="timeline userNavs"><%= link_to "Timeline", timelines_path %></div>
-        
+    <% if user_signed_in?
+    %>
         <div class="rightNavbar">
             <ul class="rightNavbarList">
                 <li class="rightNavbarListItem"><%= link_to "Institutes", institutes_path %></li>
@@ -60,6 +52,17 @@
                 <li class="rightNavbarListItem"><%= link_to "Review My Feedbacks", overview_batch_feedback_index_path(current_user.batch) %></li>
             </ul>
         </div>
+<%end%>
+<div class="top-nav-bar">
+
+    <% if user_signed_in?
+    %>
+        <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "loginLogoutUser" %>
+        <div id="currentEmail userControls">    <%= current_user.email %>  </div>
+        <div id="currentName userControls"> <%= current_user.firstname.humanize %> <%= current_user.lastname.humanize %> </div>
+        <div id="currentHash userControls" style="display : none;"> <%= Digest::MD5.hexdigest(current_user.email) %> </div>
+        <div id="timeline userNavs"><%= link_to "Timeline", timelines_path %></div>
+        
 	<%
 	else
 	%>

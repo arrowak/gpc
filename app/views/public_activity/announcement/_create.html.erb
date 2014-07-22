@@ -4,6 +4,8 @@
 	<%= link_to activity.owner.email, user_profile_path(activity.owner), :class => "userprofilelink" if activity.owner %>
 	has uploaded new  
 	<%= link_to "announcement", batch_announcement_path(activity.trackable.batch, activity.trackable) %>
+	<br>
+	<div class="small blur right">posted on <%= ist activity.trackable.created_at %> </div>
 <% else %>
   which has since been removed
 <% end %>

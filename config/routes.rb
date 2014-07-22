@@ -49,7 +49,7 @@ Gpc::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  root :to => "home#index"
+  root :to => "timelines#index"
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

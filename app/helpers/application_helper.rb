@@ -29,4 +29,8 @@ module ApplicationHelper
     end.html_safe if content.present?
   end
 
+  def ist(time)
+  time.in_time_zone(TZInfo::Timezone.get('Asia/Kolkata')).strftime("%d %b %Y %I:%M %p")
+end
+
 end
