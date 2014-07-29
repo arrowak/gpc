@@ -243,7 +243,7 @@ h1,h2,h3,h4{
 	max-width: 100%;
 }
 
-.rightNavbar{
+.leftNavbar{
 	position: fixed;
 	right: 2%;
 	top: 20%;
@@ -251,13 +251,13 @@ h1,h2,h3,h4{
 	border: 1px solid rgba(0,0,0,0.2);
 }
 
-.rightNavbar ul{
+.leftNavbar ul{
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
 }
 
-.rightNavbar ul li{
+.leftNavbar ul li{
 	padding: 5px;
 }
 

@@ -11,6 +11,14 @@
   <link href='http://fonts.googleapis.com/css?family=Metrophobic' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+<!-- currentName field -->
+<div id="currentName"><% if(current_user != nil)
+                        then
+                             %><%= current_user.firstname %> <%= current_user.lastname %><%
+                             end%></div>
+<!-- currentName field End -->
+
 <!-- p class="notice"><%= notice %></p -->
 <p class="alert"><%= alert %></p>
 
@@ -41,27 +49,38 @@
 
     <% if user_signed_in?
     %>
-        <div class="rightNavbar">
-            <ul class="rightNavbarList">
-                <li class="rightNavbarListItem"><%= link_to "Institutes", institutes_path %></li>
-                <li class="rightNavbarListItem"><%= link_to "Timeline", timelines_path %></li>
-                <li class="rightNavbarListItem"><%= link_to "Documents", batch_documents_path(current_user.batch) %></li>
-                <li class="rightNavbarListItem"><%= link_to "Announcements", batch_announcements_path(current_user.batch) %></li>
-                <li class="rightNavbarListItem"><%= link_to "Forms", forms_path %></li>
-                <li class="rightNavbarListItem"><%= link_to "Feedbacks", batch_feedback_index_path(current_user.batch) %></li>
-                <li class="rightNavbarListItem"><%= link_to "Review My Feedbacks", overview_batch_feedback_index_path(current_user.batch) %></li>
+        <div class="leftNavbar">
+            <ul class="leftNavbarList">
+                <li class="leftNavbarListItem"><%= link_to "Institutes", institutes_path %></li>
+                <li class="leftNavbarListItem"><%= link_to "Timeline", timelines_path %></li>
+                <li class="leftNavbarListItem"><%= link_to "Documents", batch_documents_path(current_user.batch) %></li>
+                <li class="leftNavbarListItem"><%= link_to "Announcements", batch_announcements_path(current_user.batch) %></li>
+                <li class="leftNavbarListItem"><%= link_to "Forms", forms_path %></li>
+                <li class="leftNavbarListItem"><%= link_to "Feedbacks", batch_feedback_index_path(current_user.batch) %></li>
+                <li class="leftNavbarListItem"><%= link_to "Review My Feedbacks", overview_batch_feedback_index_path(current_user.batch) %></li>
             </ul>
         </div>
+
+        <div class="rightNavbar">
+            <%= render :partial => 'chats/chat' %>
+        </div>
+        
+        <div id="chatWindows" class="chatWindows">
+
+        </div>
+
+
 <%end%>
 <div class="top-nav-bar">
 
     <% if user_signed_in?
     %>
+        <div class="chatWindowTrigger conversation icon"></div>
+        <div class="userSettings user icon"></div>
         <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "loginLogoutUser" %>
         <div id="currentEmail userControls">    <%= current_user.email %>  </div>
         <div id="currentName userControls"> <%= current_user.firstname.humanize %> <%= current_user.lastname.humanize %> </div>
         <div id="currentHash userControls" style="display : none;"> <%= Digest::MD5.hexdigest(current_user.email) %> </div>
-        <div id="timeline userNavs"><%= link_to "Timeline", timelines_path %></div>
         
 	<%
 	else

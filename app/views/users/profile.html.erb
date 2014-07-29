@@ -7,5 +7,5 @@
 	<p>Batch : <%= @user.batch.name %></p>
 	<p>Institute : <%= @user.batch.department.institute.name %></p>
 	<p>Contact Number : <%= @user.contact_number %></p>
-	<p>Avatar : <%= image_tag @user.avatar.url, :style => "width : 150px;" %></p>
+	<p>Avatar : <%= image_tag @user.avatar.url, :style => "max-width : 150px;" %></p>
 </div>

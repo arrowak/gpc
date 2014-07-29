@@ -4,7 +4,7 @@ class ChatsController < ApplicationController
 	def index
 		@chats = Chat.all
 		@chat_listen_hash = Digest::MD5.hexdigest(current_user.email)
-		@users = User.all
+		@users = current_user.batch.users
 	end
 
 	def create

@@ -19,7 +19,7 @@
     <td><%= batch.date_end %></td>
     <td><%= batch.department.name %></td>
     <td><%= batch.active %></td>
-    <td><%= link_to 'Show', institute_department_batch_path(@institute, @department, batch) %></td>
+    <td><%= link_to '', institute_department_batch_path(@institute, @department, batch), :class => "eye icon", :title => "Show Details" %></td>
     <td><%= link_to 'Edit', edit_institute_department_batch_path(@institute, @department, batch) %></td>
     <td><%= link_to 'Destroy', institute_department_batch_path(@institute, @department, batch), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

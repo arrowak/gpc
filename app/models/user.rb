@@ -5,9 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :firstname, :lastname, :contact_number, :avatar
-  has_attached_file :avatar, :default_url => "http://placehold.it/100x100"
   do_not_validate_attachment_file_type :avatar
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :firstname, :lastname, :contact_number, :avatar
+  has_attached_file :avatar, :styles => {
+      :thumb => "50x50#",
+      :small  => "150x150>",
+      :medium => "200x200"}, :default_url => "http://placehold.it/50x50"
 
   belongs_to :role
   belongs_to :batch

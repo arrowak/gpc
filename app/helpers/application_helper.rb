@@ -30,7 +30,11 @@ module ApplicationHelper
   end
 
   def ist(time)
-  time.in_time_zone(TZInfo::Timezone.get('Asia/Kolkata')).strftime("%d %b %Y %I:%M %p")
-end
+    time.in_time_zone(TZInfo::Timezone.get('Asia/Kolkata')).strftime("%d %b %Y %I:%M %p")
+  end
+
+  def users_for_current_user
+    current_user.batch.users
+  end
 
 end

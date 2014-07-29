@@ -13,7 +13,7 @@
 <% @announcements.each do |announcement| %>
   <tr>
     <td><%= announcement.message %></td>
-    <td><%= link_to 'Show', batch_announcement_path(@batch, announcement) %></td>
+    <td><%= link_to '', batch_announcement_path(@batch, announcement), :class => "eye icon", :title => "Show Details" %></td>
     <td><%= link_to 'Edit', edit_batch_announcement_path(@batch, announcement) %></td>
     <td><%= link_to 'Destroy', batch_announcement_path(@batch, announcement), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

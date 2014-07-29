@@ -13,7 +13,7 @@
   <tr>
     <td><%= department.name %></td>
     <td><%= department.institute.name %></td>
-    <td><%= link_to 'Show', institute_department_path(@institute, department) %></td>
+    <td><%= link_to '', institute_department_path(@institute, department), :class => "eye icon", :title => "Show Details" %></td>
     <td><%= link_to 'Edit', edit_institute_department_path(@institute, department) %></td>
     <td><%= link_to 'Destroy', institute_department_path(@institute, department), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

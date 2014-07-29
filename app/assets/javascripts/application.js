@@ -18,126 +18,176 @@
 
 BASE_ANIMATION_DURATION = 200;
 
-$.fn.getPreText = function () {
+$(document).ready(function() {
+    $('.chatWindowTrigger').click(function() {
+        show_chat_window();
+    });
+
+    $('.chatWindows').on('click', '.chatClose', function() {
+        $(this).closest(".chatWindow").remove();
+    });
+
+    $('.profilePicInput').change(function() {
+        readURL(this);
+    });
+});
+
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('.profilePicImg').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$.fn.getPreText = function() {
     var ce = $("<pre />").html(this.html());
     if ($.browser.webkit)
-      ce.find("div").replaceWith(function() { return "\n" + this.innerHTML; });
+        ce.find("div").replaceWith(function() {
+            return "\n" + this.innerHTML;
+        });
     if ($.browser.msie)
-      ce.find("p").replaceWith(function() { return this.innerHTML + "<br>"; });
-    if ($.browser.mozilla || $.browser.opera || $.browser.msie){
-      alert(":::")
-      console.log(ce.find('br'))
-      ce.find("br").replaceWith("\n");
+        ce.find("p").replaceWith(function() {
+            return this.innerHTML + "<br>";
+        });
+    if ($.browser.mozilla || $.browser.opera || $.browser.msie) {
+        alert(":::")
+        console.log(ce.find('br'))
+        ce.find("br").replaceWith("\n");
     }
-      
-  	console.log(ce.text());
+
+    console.log(ce.text());
     return ce.text();
 };
 
-function format_pre_chat_msg(msg){
-	var ce = $("<pre />").html(msg);
+function format_pre_chat_msg(msg) {
+    var ce = $("<pre />").html(msg);
     if ($.browser.webkit)
-      ce.find("br").replaceWith(function() { return "\n" + this.innerHTML; });
+        ce.find("br").replaceWith(function() {
+            return "\n" + this.innerHTML;
+        });
     if ($.browser.msie)
-      ce.find("p").replaceWith(function() { return this.innerHTML + "<br>"; });
+        ce.find("p").replaceWith(function() {
+            return this.innerHTML + "<br>";
+        });
     if ($.browser.mozilla || $.browser.opera || $.browser.msie)
-      ce.find("br").replaceWith("\n");
-  	console.log(ce.text());
+        ce.find("br").replaceWith("\n");
+    console.log(ce.text());
     return ce.text();
 }
 
 
 function remove_fields(link) {
-  $(link).prev("input[type=hidden]").val("1");
-  $(link).closest(".fields").hide();
+    $(link).prev("input[type=hidden]").val("1");
+    $(link).closest(".fields").hide();
 }
 
 function add_fields(link, association, content) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).parent().before(content.replace(regexp, new_id));
+    var new_id = new Date().getTime();
+    var regexp = new RegExp("new_" + association, "g")
+    $(link).parent().before(content.replace(regexp, new_id));
 }
 
 
 /* Modal Functions */
-var modal_load = function(data){
-  var modal = $('#modal');
-  var modalClose = $('#modalClose');
-  modal.empty();
-  modal.html(data);
-  modal.animate({
-    "left": "5%"
-  }, BASE_ANIMATION_DURATION);
-  modalClose.animate({
-    "right": "0%"
-  }, BASE_ANIMATION_DURATION);
+var modal_load = function(data) {
+    var modal = $('#modal');
+    var modalClose = $('#modalClose');
+    modal.empty();
+    modal.html(data);
+    modal.animate({
+        "left": "5%"
+    }, BASE_ANIMATION_DURATION);
+    modalClose.animate({
+        "right": "0%"
+    }, BASE_ANIMATION_DURATION);
 };
 
-var modal_close = function(){
-  var modal = $('#modal');
-  var modalClose = $('#modalClose');
-  modal.animate({
-    "left": "115%"
-  }, BASE_ANIMATION_DURATION);
-   modalClose.animate({
-    "right": "-115%"
-  }, BASE_ANIMATION_DURATION);
-  modal.empty();
+var modal_close = function() {
+    var modal = $('#modal');
+    var modalClose = $('#modalClose');
+    modal.animate({
+        "left": "115%"
+    }, BASE_ANIMATION_DURATION);
+    modalClose.animate({
+        "right": "-115%"
+    }, BASE_ANIMATION_DURATION);
+    modal.empty();
 };
 /* Modal Functions End */
 
 /* Loader Functions */
-var show_loader = function(text){
-  if(typeof text === 'undefined')
-  {
-    text = "Loading...";
-  }
+var show_loader = function(text) {
+    if (typeof text === 'undefined') {
+        text = "Loading...";
+    }
 
-  $('.loaderContent').html(text);
-  show_backdrop();
-  $('#loader').hide().fadeIn(BASE_ANIMATION_DURATION);
+    $('.loaderContent').html(text);
+    show_backdrop();
+    $('#loader').hide().fadeIn(BASE_ANIMATION_DURATION);
 };
 
-var hide_loader = function(){
-  $('.loaderContent').empty();
-  $('#loader').show().fadeOut(BASE_ANIMATION_DURATION);
-  hide_backdrop();
+var hide_loader = function() {
+    $('.loaderContent').empty();
+    $('#loader').show().fadeOut(BASE_ANIMATION_DURATION);
+    hide_backdrop();
 };
 /* Loader Functions End */
 
 /* Backdrop Functions */
-var show_backdrop = function(){
-  $('#backdrop').hide().fadeIn(BASE_ANIMATION_DURATION);
+var show_backdrop = function() {
+    $('#backdrop').hide().fadeIn(BASE_ANIMATION_DURATION);
 };
 
-var hide_backdrop = function(){
-  $('#backdrop').show().fadeOut(BASE_ANIMATION_DURATION);
+var hide_backdrop = function() {
+    $('#backdrop').show().fadeOut(BASE_ANIMATION_DURATION);
 };
 /* Backdrop Functions End */
 
 
 /* Prompt Functions */
-var prompt_load = function(data){
-  show_loader();
-  var modal = $('.outerPrompt');
-  var innerPrompt = $('.innerPrompt');
-  innerPrompt.empty();
-  innerPrompt.html(data);
-  modal.hide().animate({
-    opacity: "1"
-  },BASE_ANIMATION_DURATION);
-  modal.css('display','table');
+var prompt_load = function(data) {
+    show_loader();
+    var modal = $('.outerPrompt');
+    var innerPrompt = $('.innerPrompt');
+    innerPrompt.empty();
+    innerPrompt.html(data);
+    modal.hide().animate({
+        opacity: "1"
+    }, BASE_ANIMATION_DURATION);
+    modal.css('display', 'table');
 };
 
-var prompt_close = function(){
-  var modal = $('.outerPrompt');
-  var innerPrompt = $('.innerPrompt');
-  modal.show().animate({
-    display:"none",
-    opacity: "0"
-  },BASE_ANIMATION_DURATION, function(){
-    innerPrompt.empty();
-  });
-  hide_loader();
+var prompt_close = function() {
+    var modal = $('.outerPrompt');
+    var innerPrompt = $('.innerPrompt');
+    modal.show().animate({
+        display: "none",
+        opacity: "0"
+    }, BASE_ANIMATION_DURATION, function() {
+        innerPrompt.empty();
+    });
+    hide_loader();
 };
 /* Prompt Functions End */
+
+
+/* Show chats window */
+var show_chat_window = function() {
+    if ($('.rightNavbar').css('right') == "0px") {
+        $('.rightNavbar').animate({
+            right: '-20%'
+        }, BASE_ANIMATION_DURATION);
+    } else {
+        $('.rightNavbar').animate({
+            right: '0px'
+        }, BASE_ANIMATION_DURATION);
+    }
+
+};
+/* Show chats window End */

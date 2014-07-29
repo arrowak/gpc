@@ -1,7 +1,7 @@
 <div class="listactivities">
 <% if activity.trackable %>
-	<%= link_to activity.owner.email, user_profile_path(activity.owner) %>
-	has uploaded new  
+	<%= image_tag activity.owner.avatar.url(:thumb), :class=>"timelineProfilePic" %> <%= link_to "#{activity.owner.firstname} #{activity.owner.lastname}", user_profile_path(activity.owner) %>
+	has shared a new  
 	document - 
 	<p><%= link_to activity.trackable.title, batch_document_path(activity.trackable.batch, activity.trackable) %></p>
 	<br>
