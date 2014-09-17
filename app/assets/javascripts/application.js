@@ -30,6 +30,10 @@ $(document).ready(function() {
     $('.profilePicInput').change(function() {
         readURL(this);
     });
+
+    $('.pagination_more_link').click(function() {
+        $(this).replaceWith("Loading more posts ...");
+    });
 });
 
 function readURL(input) {

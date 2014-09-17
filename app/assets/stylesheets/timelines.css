@@ -1,16 +1,13 @@
 .listactivities{
 	width: 75%;
 	min-width: 500px;
-	margin: 2px 0px 2px 0px;
+	margin: 2px 0px 5pt 0px;
 	padding: 15pt 10pt;
-	border-left: 1px solid rgba(0,0,0,0.2);
-	border-right: 1px solid rgba(0,0,0,0.2);
-	border-bottom: 1px solid rgba(0,0,0,0.1);
-	border-radius: 3px;
+	background: white;
 }
 
 .listactivities:hover{
-	background: rgba(0,0,0,0.02);
+	background: rgba(255,255,255,0.98);
 }
 
 .listactivities:first-of-type{

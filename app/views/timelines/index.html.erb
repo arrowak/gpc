@@ -1,2 +1,17 @@
 <div class="header timelinesHeader">What's new !</div>
-<%= render_activities(@activities) %>
+	<% @activities.each do |activity| %>
+		<%= render_activity activity %>
+	<% end %>
+	<% if @current_page < @total_pages
+		then
+			actual_url = request.original_url 
+			if(!params[:page].nil?)
+			then
+				new_url = actual_url.sub! "page=#{@current_page}", "page=#{@current_page+1}"
+			else
+				new_url = "#{actual_url}?page=2"
+			end
+		%>
+			<%= link_to "More Posts", new_url, :class => "pagination_more_link" %>
+			
+	<% end %>

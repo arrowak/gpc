@@ -4,6 +4,8 @@
 	has shared a new  
 	document - 
 	<p><%= link_to activity.trackable.title, batch_document_path(activity.trackable.batch, activity.trackable) %></p>
+	<div class="flag icon blur fright"></div>
+	<div class="document icon blur fright"></div> 
 	<br>
 	<div class="small blur right">posted on <%= ist activity.trackable.created_at %> </div>
 <% else %>

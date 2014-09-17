@@ -9,6 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   
   <link href='http://fonts.googleapis.com/css?family=Metrophobic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:300,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -75,17 +77,17 @@
 
     <% if user_signed_in?
     %>
-        <div class="chatWindowTrigger conversation icon"></div>
-        <div class="userSettings user icon"></div>
-        <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "loginLogoutUser" %>
-        <div id="currentEmail userControls">    <%= current_user.email %>  </div>
-        <div id="currentName userControls"> <%= current_user.firstname.humanize %> <%= current_user.lastname.humanize %> </div>
-        <div id="currentHash userControls" style="display : none;"> <%= Digest::MD5.hexdigest(current_user.email) %> </div>
+        <div class="fright  newwindow icon" title="Logout"><%= link_to "", destroy_user_session_path, :method => :delete, :class => "loginLogoutUser" %></div>
+        <div class="chatWindowTrigger conversation icon fright" title="Chat Conversations"></div>
+        <div class="userSettings user icon fright" title="Account"></div>
+        <!-- <div class="currentEmail userControls">    <%= current_user.email %>  </div> -->
+        <div class="currentName userControls fleft"> <span class="bold">W</span>elcome, <%= current_user.firstname.humanize %> <%= current_user.lastname.humanize %> </div>
+        <div class="currentHash userrControls" style="display : none;"> <%= Digest::MD5.hexdigest(current_user.email) %> </div>
         
 	<%
 	else
 	%>
-		<%= link_to "Login", new_user_session_path, :class => "loginLogoutUser" %>
+		<%= link_to "Login", new_user_session_path, :class => "loginLogoutUser fright" %>
 	<%
 	end %>
 
